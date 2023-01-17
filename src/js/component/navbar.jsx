@@ -9,13 +9,13 @@ export const Navbar = () => {
 			</Link>
 			<div className="me-5 dropdown">
 				<Link to="/demo">
-						<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Dropdown
+						<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Favorites
 						</button>
-						<ul class="dropdown-menu">
-							<li><button class="dropdown-item" type="button">Action</button></li>
-							<li><button class="dropdown-item" type="button">Another action</button></li>
-							<li><button class="dropdown-item" type="button">Something else here</button></li>
+						<ul className="dropdown-menu">
+							<li><button className="dropdown-item" type="button">Action</button></li>
+							<li><button className="dropdown-item" type="button">Another action</button></li>
+							<li><button className="dropdown-item" type="button">Something else here</button></li>
 						</ul>
 				</Link>
 			</div>
