@@ -91,8 +91,6 @@ const getState = ({
 
             addToFavorites: (item) => {
                 let store = getStore();
-                console.log(item)
-                console.log(store.favorites)
                 if (store.favorites.includes(item)) {
                     getActions().deleteFavorite(item);
                     console.log("HOLA")
@@ -105,6 +103,20 @@ const getState = ({
 
                 }
             },
+
+            setRoutefunc: (item) => {
+                let itemURL = item.url;
+                if (itemURL.includes("people")) {
+                    return "/single/";
+                }
+                if (itemURL.includes("planets")) {
+                    return "/singlePlanet/";
+                }
+                if (itemURL.includes("vehicles")) {
+                    return "/singleVehicle/";
+                }
+            },
+
             deleteFavorite: (id) => {
                 let store = getStore();
                 console.log("funca");
