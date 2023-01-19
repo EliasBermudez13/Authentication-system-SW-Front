@@ -19,7 +19,10 @@ const getState = ({
             people: [],
             planets: [],
             vehicles: [],
-            favorites: []
+            favorites: [],
+            person: {},
+            planet: {},
+            vehicle: {}
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -32,9 +35,6 @@ const getState = ({
                 */
             },
             getAllPeople: () => {
-                /**
-                	fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
                 fetch("https://swapi.dev/api/people/")
                     .then(res => res.json())
                     .then(data => setStore({
@@ -43,9 +43,6 @@ const getState = ({
                     .catch(err => console.error(err))
             },
             getAllPlanets: () => {
-                /**
-                	fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
                 fetch("https://swapi.dev/api/planets/")
                     .then(res => res.json())
                     .then(data => setStore({
@@ -64,14 +61,48 @@ const getState = ({
                     }))
                     .catch(err => console.error(err))
             },
+
+            getSinglePerson: (id) => {
+                fetch("https://swapi.dev/api/people/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        person: data
+                    }))
+                    .catch(err => console.error(err))
+            },
+
+            getSinglePlanet: (id) => {
+                fetch("https://swapi.dev/api/planets/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        planet: data
+                    }))
+                    .catch(err => console.error(err))
+            },
+
+            getSingleVehicle: (id) => {
+                fetch("https://swapi.dev/api/vehicles/" + id)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        vehicle: data
+                    }))
+                    .catch(err => console.error(err))
+            },
+
             addToFavorites: (item) => {
                 let store = getStore();
+                console.log(item)
+                console.log(store.favorites)
                 if (store.favorites.includes(item)) {
                     getActions().deleteFavorite(item);
+                    console.log("HOLA")
                 } else {
+                    console.log(item)
+                    console.log(store.favorites)
                     setStore({
                         favorites: [...store.favorites, item]
                     })
+
                 }
             },
             deleteFavorite: (id) => {
@@ -81,21 +112,13 @@ const getState = ({
                     favorites: store.favorites.filter((item) => item !== id)
                 })
             },
-            changeColor: (index, color) => {
-                //get the store
-                const store = getStore();
-
-                //we have to loop the entire demo array to look for the respective index
-                //and change its color
-                const demo = store.demo.map((elm, i) => {
-                    if (i === index) elm.background = color;
-                    return elm;
-                });
-
-                //reset the global store
-                setStore({
-                    demo: demo
-                });
+            changeColor: (item) => {
+                let store = getStore()
+                if (store.favorites.includes(item)) {
+                    return "fa fa-heart text-warning fs-4";
+                } else {
+                    return "far fa-heart text-warning fs-4"
+                }
             }
         }
     };

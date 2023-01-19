@@ -4,6 +4,7 @@ import { Context } from "../store/appContext.js";
 
 export const Card = (props) => {
 	let id = props.id;
+	let item = props.item;
 	const {actions} = useContext(Context); 
     return(
 		<div className="col m-4">
@@ -16,7 +17,7 @@ export const Card = (props) => {
 					<p className="card-text">Eye color: {props.eye}</p>
 					<div className="d-flex justify-content-between">
 						<Link className="btn btn-outline-primary" to={"/single/"+ props.id}>Learn more!</Link>
-						<button type="button" className="btn btn-outline-warning" onClick={()=>actions.addToFavorites(props)}><i className="fa fa-heart"></i></button>
+						<button type="button" className="btn btn-outline-light" onClick={()=>actions.addToFavorites(item)}><i className={actions.changeColor(item)}></i></button>
 					</div>
 				</div>
 			</div>

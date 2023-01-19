@@ -11,7 +11,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="me-5 dropdown">
 						<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Favorites
+						Favorites<span className="bg-secondary p-1 m-2 rounded-1">{store.favorites.length}</span>
 						</button>
 						<ul className="dropdown-menu">
 						{store.favorites.map((item, id) => <li className="dropdown-item float-start" key={id}>{item.name} <button type="button" className="btn border-0 float-end"  onClick={() => actions.deleteFavorite(item)}><i className="fa fa-trash"></i></button></li>)}
