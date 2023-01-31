@@ -8,7 +8,7 @@ import { Single } from "./views/single";
 import { SinglePlanet } from "./views/singlePlanet.jsx";
 import { SingleVehicle } from "./views/singleVehicle.jsx";
 import injectContext from "./store/appContext";
-
+import { SignUp } from "./views/signUp.js"
 import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer.jsx";
 
@@ -23,9 +23,10 @@ const Layout = () => {
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/demo" element={<Demo />} />
+					<Routes >
+						<Route path="/login" element={<Demo />} />
+						<Route path="/home" element={<Home />} />
+						<Route path="/" element={<SignUp />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="/singlePlanet/:theid" element={<SinglePlanet />} />
 						<Route path="/singleVehicle/:theid" element={<SingleVehicle />} />
